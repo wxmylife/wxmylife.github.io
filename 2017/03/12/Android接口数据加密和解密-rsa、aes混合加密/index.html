@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="android,数据加密," />
 
 
 
@@ -87,15 +87,24 @@
 
 
 
-<meta name="description" content="为API生，为框架死，为了bug奋斗一辈子，吃符号亏，上大小写的当，最后死在需求上">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wxmylife">
-<meta property="og:url" content="http://wxmylife.com/index.html">
+<meta name="description" content="流程介绍：是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android接口数据加密和解密(rsa、aes混合加密)">
+<meta property="og:url" content="http://wxmylife.com/2017/03/12/Android接口数据加密和解密-rsa、aes混合加密/index.html">
 <meta property="og:site_name" content="wxmylife">
-<meta property="og:description" content="为API生，为框架死，为了bug奋斗一辈子，吃符号亏，上大小写的当，最后死在需求上">
+<meta property="og:description" content="流程介绍：是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密">
+<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/1.png">
+<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/2.png">
+<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/3.png">
+<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/4.png">
+<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/5.png">
+<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/6.png">
+<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/7.png">
+<meta property="og:updated_time" content="2017-03-12T15:04:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wxmylife">
-<meta name="twitter:description" content="为API生，为框架死，为了bug奋斗一辈子，吃符号亏，上大小写的当，最后死在需求上">
+<meta name="twitter:title" content="Android接口数据加密和解密(rsa、aes混合加密)">
+<meta name="twitter:description" content="流程介绍：是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密">
+<meta name="twitter:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/1.png">
 
 
 
@@ -123,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://wxmylife.com/"/>
+  <link rel="canonical" href="http://wxmylife.com/2017/03/12/Android接口数据加密和解密-rsa、aes混合加密/"/>
 
 
 
 
 
-  <title> wxmylife </title>
+  <title> Android接口数据加密和解密(rsa、aes混合加密) | wxmylife </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,9 +163,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,176 +294,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wxmylife.com/2017/03/12/Android通过JNI加密，并实现APP签名验证/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="梦漂浮在我的咖啡上">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wxmylife">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/12/Android通过JNI加密，并实现APP签名验证/" itemprop="url">
-                  Android通过JNI加密，并实现APP签名验证
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T22:59:48+08:00">
-                2017-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/12/Android通过JNI加密，并实现APP签名验证/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/12/Android通过JNI加密，并实现APP签名验证/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/03/12/Android通过JNI加密，并实现APP签名验证/" class="leancloud_visitors" data-flag-title="Android通过JNI加密，并实现APP签名验证">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一-前言："><a href="#一-前言：" class="headerlink" title="一.前言："></a>一.前言：</h3><blockquote>
-<p>移动端数据加密，需要将RSA加密公钥存储，考虑到安全，现将公钥存在.so文件中，为了防止有人将.so文件拷贝使用，因此在里面验证app的签名，对比签名信息，如果正确，返回正确公钥。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/12/Android通过JNI加密，并实现APP签名验证/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
 
   
 
@@ -486,10 +326,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/03/12/Android接口数据加密和解密-rsa、aes混合加密/" itemprop="url">
-                  Android接口数据加密和解密(rsa、aes混合加密)
-                </a>
+                Android接口数据加密和解密(rsa、aes混合加密)
               
             
           </h1>
@@ -583,55 +420,142 @@
       
 
       
-        
-          <h2 id="流程介绍："><a href="#流程介绍：" class="headerlink" title="流程介绍："></a>流程介绍：</h2><p>是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密加密的AES密钥，得到AES密钥。最后用该AES密钥解密密文得到明文</p>
+        <h2 id="流程介绍："><a href="#流程介绍：" class="headerlink" title="流程介绍："></a>流程介绍：</h2><p>是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密加密的AES密钥，得到AES密钥。最后用该AES密钥解密密文得到明文</p>
 <p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/1.png" alt="数据加密流程"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/12/Android接口数据加密和解密-rsa、aes混合加密/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<a id="more"></a>
+<h4 id="推荐文章"><a href="#推荐文章" class="headerlink" title="推荐文章"></a>推荐文章</h4><p><a href="http://www.jianshu.com/p/d4fee3a2de82" target="_blank" rel="external">Android数据加密方案</a></p>
+<p><a href="http://www.cnblogs.com/whoislcj/p/5470095.html" target="_blank" rel="external">Android数据加密之RSA加密</a></p>
+<p><a href="http://www.cnblogs.com/whoislcj/p/5473030.html" target="_blank" rel="external">Android数据加密之Aes加密</a></p>
+<h2 id="制作RSA公钥和私钥"><a href="#制作RSA公钥和私钥" class="headerlink" title="制作RSA公钥和私钥"></a>制作RSA公钥和私钥</h2><ul>
+<li>新建一文件夹，用终端进入到该文件夹下</li>
+</ul>
+<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/2.png" alt="效果示例"></p>
+<ul>
+<li>打开mac自带的OpenSSL</li>
+</ul>
+<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/3.png" alt="效果示例"></p>
+<ul>
+<li>通过如下命令生成私钥：<code>genrsa -out rsa_private_key.pem 2048</code>，生成了一份私钥，加密长度是2048位， 密钥长度，范围：512～2048, 内容是标准的ASCII字符</li>
+</ul>
+<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/4.png" alt="效果示例"></p>
+<ul>
+<li><p>通过如下命令生成公钥：</p>
+<p>  <code>rsa -in rsa_private_key.pem -out rsa_public_key.pem -pubout</code></p>
+</li>
+</ul>
+<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/5.png" alt="效果示例"></p>
+<ul>
+<li>这样密钥就基本生成了，不过这样密钥对的私钥是无法在代码中直接使用的，要想使用它需要借助RSAPrivateKeyStructure这个类，Java是不自带的。所以为了方便使用，我们需要对私钥进行PKCS#8编码，命令如下：</li>
+</ul>
+<p><code>pkcs8 -topk8 -in rsa_private_key.pem -out pkcs8_rsa_private_key.pem -nocrypt</code> </p>
+<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/6.png" alt="效果示例"></p>
+<ul>
+<li>所有步骤完成，最终如下图</li>
+</ul>
+<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/7.png" alt="效果示例"></p>
+<hr>
+<h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">	//得到AES加密随机生成的密钥匙</div><div class="line">String aesKey=  AESUtils.generateKeyString();</div><div class="line">System.out.println(&quot;AES秘钥为--------&gt;&gt;&gt;&gt;&quot;+aesKey);</div><div class="line">System.out.println(&quot;&lt;&lt;&lt;&lt;----------------------------------------&gt;&gt;&gt;&gt;&quot;);</div><div class="line">//获取加密数据</div><div class="line">String context=initData();</div><div class="line"></div><div class="line">//AES加密生成密文</div><div class="line">String aesToContext=AESUtils.encrypt(context, aesKey);</div><div class="line">System.out.println(&quot;AES加密后密文为--------&gt;&gt;&gt;&gt;&quot;+aesToContext);</div><div class="line">System.out.println(&quot;&lt;&lt;&lt;&lt;----------------------------------------&gt;&gt;&gt;&gt;&quot;);</div><div class="line">//获取RSA公钥</div><div class="line">RSAPublicKey publicKey=RSAUtils.loadPublicKey(new FileInputStream(&quot;rsa_public_key.pem文件路径&quot;));</div><div class="line">//RSA公钥加密AES生成的密钥匙</div><div class="line">String rsaAesKey=RSAUtils.encryptByPublicKey(aesKey, publicKey);</div><div class="line">System.out.println(&quot;RSA加密后密钥为--------&gt;&gt;&gt;&gt;&quot;+rsaAesKey);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">System.out.println(&quot;&lt;&lt;&lt;&lt;----------------------------------------&gt;&gt;&gt;&gt;&quot;);</div><div class="line">//获取RSA私钥路径</div><div class="line">RSAPrivateKey privateKey=RSAUtils.loadPrivateKey(new FileInputStream(&quot;pkcs8_rsa_private_key.pem文件路径&quot;));</div><div class="line">//RSA私钥解密加密过后的AES生成的密钥匙</div><div class="line">String aesRKey=RSAUtils.decryptByPrivateKey(rsaAesKey, privateKey);</div><div class="line">System.out.println(&quot;RSA解密后密钥为--------&gt;&gt;&gt;&gt;&quot;+aesRKey);</div><div class="line">String txt=AESUtils.decrypt(aesToContext, aesRKey);</div><div class="line">System.out.println(&quot;AES解密后密文为--------&gt;&gt;&gt;&gt;&quot;+txt);</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/wxmylife/RSA_AES" target="_blank" rel="external">项目地址</a></p>
+
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+            <a href="/tags/数据加密/" rel="tag"># 数据加密</a>
+          
+        </div>
       
 
       
+        
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/12/Android通过JNI加密，并实现APP签名验证/" rel="prev" title="Android通过JNI加密，并实现APP签名验证">
+                Android通过JNI加密，并实现APP签名验证 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/03/12/Android接口数据加密和解密-rsa、aes混合加密/"
+     data-title="Android接口数据加密和解密(rsa、aes混合加密)"
+     data-content=""
+     data-url="http://wxmylife.com/2017/03/12/Android接口数据加密和解密-rsa、aes混合加密/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
           
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/12/Android接口数据加密和解密-rsa、aes混合加密/"
+           data-title="Android接口数据加密和解密(rsa、aes混合加密)" data-url="http://wxmylife.com/2017/03/12/Android接口数据加密和解密-rsa、aes混合加密/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -651,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -730,6 +663,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程介绍："><span class="nav-number">1.</span> <span class="nav-text">流程介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推荐文章"><span class="nav-number">1.0.1.</span> <span class="nav-text">推荐文章</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作RSA公钥和私钥"><span class="nav-number">2.</span> <span class="nav-text">制作RSA公钥和私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试代码"><span class="nav-number">3.</span> <span class="nav-text">测试代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -835,6 +784,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
