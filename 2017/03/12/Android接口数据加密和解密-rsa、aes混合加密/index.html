@@ -93,18 +93,18 @@
 <meta property="og:url" content="http://wxmylife.com/2017/03/12/Android接口数据加密和解密-rsa、aes混合加密/index.html">
 <meta property="og:site_name" content="wxmylife">
 <meta property="og:description" content="流程介绍：是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密">
-<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/1.png">
-<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/2.png">
-<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/3.png">
-<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/4.png">
-<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/5.png">
-<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/6.png">
-<meta property="og:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/7.png">
-<meta property="og:updated_time" content="2017-03-12T15:04:44.000Z">
+<meta property="og:image" content="http://wxmylife.com/images/2_1.png">
+<meta property="og:image" content="http://wxmylife.com/images/2_2.png">
+<meta property="og:image" content="http://wxmylife.com/images/2_3.png">
+<meta property="og:image" content="http://wxmylife.com/images/2_4.png">
+<meta property="og:image" content="http://wxmylife.com/images/2_5.png">
+<meta property="og:image" content="http://wxmylife.com/images/2_6.png">
+<meta property="og:image" content="http://wxmylife.com/images/2_7.png">
+<meta property="og:updated_time" content="2017-03-12T16:11:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android接口数据加密和解密(rsa、aes混合加密)">
 <meta name="twitter:description" content="流程介绍：是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密">
-<meta name="twitter:image" content="https://github.com/wxmylife/RSA_AES/blob/master/img/1.png">
+<meta name="twitter:image" content="http://wxmylife.com/images/2_1.png">
 
 
 
@@ -421,7 +421,7 @@
 
       
         <h2 id="流程介绍："><a href="#流程介绍：" class="headerlink" title="流程介绍："></a>流程介绍：</h2><p>是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密加密的AES密钥，得到AES密钥。最后用该AES密钥解密密文得到明文</p>
-<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/1.png" alt="数据加密流程"></p>
+<p><img src="/images/2_1.png" alt="数据加密流程"></p>
 <a id="more"></a>
 <h4 id="推荐文章"><a href="#推荐文章" class="headerlink" title="推荐文章"></a>推荐文章</h4><p><a href="http://www.jianshu.com/p/d4fee3a2de82" target="_blank" rel="external">Android数据加密方案</a></p>
 <p><a href="http://www.cnblogs.com/whoislcj/p/5470095.html" target="_blank" rel="external">Android数据加密之RSA加密</a></p>
@@ -429,30 +429,30 @@
 <h2 id="制作RSA公钥和私钥"><a href="#制作RSA公钥和私钥" class="headerlink" title="制作RSA公钥和私钥"></a>制作RSA公钥和私钥</h2><ul>
 <li>新建一文件夹，用终端进入到该文件夹下</li>
 </ul>
-<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/2.png" alt="效果示例"></p>
+<p><img src="/images/2_2.png" alt="效果示例"></p>
 <ul>
 <li>打开mac自带的OpenSSL</li>
 </ul>
-<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/3.png" alt="效果示例"></p>
+<p><img src="/images/2_3.png" alt="效果示例"></p>
 <ul>
 <li>通过如下命令生成私钥：<code>genrsa -out rsa_private_key.pem 2048</code>，生成了一份私钥，加密长度是2048位， 密钥长度，范围：512～2048, 内容是标准的ASCII字符</li>
 </ul>
-<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/4.png" alt="效果示例"></p>
+<p><img src="/images/2_4.png" alt="效果示例"></p>
 <ul>
 <li><p>通过如下命令生成公钥：</p>
 <p>  <code>rsa -in rsa_private_key.pem -out rsa_public_key.pem -pubout</code></p>
 </li>
 </ul>
-<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/5.png" alt="效果示例"></p>
+<p><img src="/images/2_5.png" alt="效果示例"></p>
 <ul>
 <li>这样密钥就基本生成了，不过这样密钥对的私钥是无法在代码中直接使用的，要想使用它需要借助RSAPrivateKeyStructure这个类，Java是不自带的。所以为了方便使用，我们需要对私钥进行PKCS#8编码，命令如下：</li>
 </ul>
 <p><code>pkcs8 -topk8 -in rsa_private_key.pem -out pkcs8_rsa_private_key.pem -nocrypt</code> </p>
-<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/6.png" alt="效果示例"></p>
+<p><img src="/images/2_6.png" alt="效果示例"></p>
 <ul>
 <li>所有步骤完成，最终如下图</li>
 </ul>
-<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/7.png" alt="效果示例"></p>
+<p><img src="/images/2_7.png" alt="效果示例"></p>
 <hr>
 <h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">	//得到AES加密随机生成的密钥匙</div><div class="line">String aesKey=  AESUtils.generateKeyString();</div><div class="line">System.out.println(&quot;AES秘钥为--------&gt;&gt;&gt;&gt;&quot;+aesKey);</div><div class="line">System.out.println(&quot;&lt;&lt;&lt;&lt;----------------------------------------&gt;&gt;&gt;&gt;&quot;);</div><div class="line">//获取加密数据</div><div class="line">String context=initData();</div><div class="line"></div><div class="line">//AES加密生成密文</div><div class="line">String aesToContext=AESUtils.encrypt(context, aesKey);</div><div class="line">System.out.println(&quot;AES加密后密文为--------&gt;&gt;&gt;&gt;&quot;+aesToContext);</div><div class="line">System.out.println(&quot;&lt;&lt;&lt;&lt;----------------------------------------&gt;&gt;&gt;&gt;&quot;);</div><div class="line">//获取RSA公钥</div><div class="line">RSAPublicKey publicKey=RSAUtils.loadPublicKey(new FileInputStream(&quot;rsa_public_key.pem文件路径&quot;));</div><div class="line">//RSA公钥加密AES生成的密钥匙</div><div class="line">String rsaAesKey=RSAUtils.encryptByPublicKey(aesKey, publicKey);</div><div class="line">System.out.println(&quot;RSA加密后密钥为--------&gt;&gt;&gt;&gt;&quot;+rsaAesKey);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">System.out.println(&quot;&lt;&lt;&lt;&lt;----------------------------------------&gt;&gt;&gt;&gt;&quot;);</div><div class="line">//获取RSA私钥路径</div><div class="line">RSAPrivateKey privateKey=RSAUtils.loadPrivateKey(new FileInputStream(&quot;pkcs8_rsa_private_key.pem文件路径&quot;));</div><div class="line">//RSA私钥解密加密过后的AES生成的密钥匙</div><div class="line">String aesRKey=RSAUtils.decryptByPrivateKey(rsaAesKey, privateKey);</div><div class="line">System.out.println(&quot;RSA解密后密钥为--------&gt;&gt;&gt;&gt;&quot;+aesRKey);</div><div class="line">String txt=AESUtils.decrypt(aesToContext, aesRKey);</div><div class="line">System.out.println(&quot;AES解密后密文为--------&gt;&gt;&gt;&gt;&quot;+txt);</div></pre></td></tr></table></figure>
 <p><a href="https://github.com/wxmylife/RSA_AES" target="_blank" rel="external">项目地址</a></p>

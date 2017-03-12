@@ -585,7 +585,7 @@
       
         
           <h2 id="流程介绍："><a href="#流程介绍：" class="headerlink" title="流程介绍："></a>流程介绍：</h2><p>是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密加密的AES密钥，得到AES密钥。最后用该AES密钥解密密文得到明文</p>
-<p><img src="https://github.com/wxmylife/RSA_AES/blob/master/img/1.png" alt="数据加密流程"></p>
+<p><img src="/images/2_1.png" alt="数据加密流程"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/12/Android接口数据加密和解密-rsa、aes混合加密/#more" rel="contents">
