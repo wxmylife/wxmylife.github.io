@@ -87,14 +87,12 @@
 
 
 
-<meta name="description" content="一.前言：
-移动端数据加密，需要将RSA加密公钥存储，考虑到安全，现将公钥存在.so文件中，为了防止有人将.so文件拷贝使用，因此在里面验证app的签名，对比签名信息，如果正确，返回正确公钥。">
+<meta name="description" content="一.前言：移动端数据加密，需要将RSA加密公钥存储，考虑到安全，现将公钥存在.so文件中，为了防止有人将.so文件拷贝使用，因此在里面验证app的签名，对比签名信息，如果正确，返回正确公钥。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android通过JNI加密，并实现APP签名验证">
 <meta property="og:url" content="http://wxmylife.com/2017/03/12/Android通过JNI加密，并实现APP签名验证/index.html">
 <meta property="og:site_name" content="wxmylife">
-<meta property="og:description" content="一.前言：
-移动端数据加密，需要将RSA加密公钥存储，考虑到安全，现将公钥存在.so文件中，为了防止有人将.so文件拷贝使用，因此在里面验证app的签名，对比签名信息，如果正确，返回正确公钥。">
+<meta property="og:description" content="一.前言：移动端数据加密，需要将RSA加密公钥存储，考虑到安全，现将公钥存在.so文件中，为了防止有人将.so文件拷贝使用，因此在里面验证app的签名，对比签名信息，如果正确，返回正确公钥。">
 <meta property="og:image" content="http://wxmylife.com/images/1_1.png">
 <meta property="og:image" content="http://wxmylife.com/images/1_2.png">
 <meta property="og:image" content="http://wxmylife.com/images/1_3.png">
@@ -103,11 +101,10 @@
 <meta property="og:image" content="http://wxmylife.com/images/1_13.png">
 <meta property="og:image" content="http://wxmylife.com/gif/1_b.gif">
 <meta property="og:image" content="http://wxmylife.com/gif/1_a.gif">
-<meta property="og:updated_time" content="2017-03-12T16:08:10.000Z">
+<meta property="og:updated_time" content="2017-03-12T16:18:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android通过JNI加密，并实现APP签名验证">
-<meta name="twitter:description" content="一.前言：
-移动端数据加密，需要将RSA加密公钥存储，考虑到安全，现将公钥存在.so文件中，为了防止有人将.so文件拷贝使用，因此在里面验证app的签名，对比签名信息，如果正确，返回正确公钥。">
+<meta name="twitter:description" content="一.前言：移动端数据加密，需要将RSA加密公钥存储，考虑到安全，现将公钥存在.so文件中，为了防止有人将.so文件拷贝使用，因此在里面验证app的签名，对比签名信息，如果正确，返回正确公钥。">
 <meta name="twitter:image" content="http://wxmylife.com/images/1_1.png">
 
 
@@ -424,9 +421,7 @@
       
 
       
-        <h3 id="一-前言："><a href="#一-前言：" class="headerlink" title="一.前言："></a>一.前言：</h3><blockquote>
-<p>移动端数据加密，需要将RSA加密公钥存储，考虑到安全，现将公钥存在.so文件中，为了防止有人将.so文件拷贝使用，因此在里面验证app的签名，对比签名信息，如果正确，返回正确公钥。</p>
-</blockquote>
+        <h3 id="一-前言："><a href="#一-前言：" class="headerlink" title="一.前言："></a>一.前言：</h3><p>移动端数据加密，需要将RSA加密公钥存储，考虑到安全，现将公钥存在.so文件中，为了防止有人将.so文件拷贝使用，因此在里面验证app的签名，对比签名信息，如果正确，返回正确公钥。</p>
 <a id="more"></a> 
 <h3 id="二-参考："><a href="#二-参考：" class="headerlink" title="二.参考："></a>二.参考：</h3><p><a href="http://www.jianshu.com/p/289c0b227902?utm_campaign=haruki&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qq" target="_blank" rel="external">Android JNI NDK C++ so本地验证 获取应用签名
 </a></p>
@@ -483,10 +478,22 @@
 </li>
 </ol>
 <ol>
-<li><p>完成效果</p>
-<p> |     成功    |    失败  |<br> | :——–: | :——–:|<br> | <img src="/gif/1_b.gif" alt="示例图片">  | <img src="/gif/1_a.gif" alt="示例图片"> | </p>
-</li>
+<li>完成效果</li>
 </ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">成功</th>
+<th style="text-align:center">失败</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="/gif/1_b.gif" alt="示例图片"></td>
+<td style="text-align:center"><img src="/gif/1_a.gif" alt="示例图片"></td>
+</tr>
+</tbody>
+</table>
 <p><a href="https://github.com/wxmylife/JNI_RSA_Sign/edit/master/README.md" target="_blank" rel="external">Github传送门</a></p>
 
       
