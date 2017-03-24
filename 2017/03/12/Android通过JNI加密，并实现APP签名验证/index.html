@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://wxmylife.com/images/1_13.png">
 <meta property="og:image" content="http://wxmylife.com/gif/1_b.gif">
 <meta property="og:image" content="http://wxmylife.com/gif/1_a.gif">
-<meta property="og:updated_time" content="2017-03-12T16:22:52.000Z">
+<meta property="og:updated_time" content="2017-03-24T06:18:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android通过JNI加密，并实现APP签名验证">
 <meta name="twitter:description" content="一.前言：移动端数据加密，需要将RSA加密公钥存储，考虑到安全，现将公钥存在.so文件中，为了防止有人将.so文件拷贝使用，因此在里面验证app的签名，对比签名信息，如果正确，返回正确公钥。">
@@ -118,8 +118,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '6266634030049920000',
-      author: '梦漂浮在我的咖啡上'
+      userId: 'undefined',
+      author: '博主'
     },
     algolia: {
       applicationID: 'N7WFCESO99',
@@ -378,16 +378,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/12/Android通过JNI加密，并实现APP签名验证/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/12/Android通过JNI加密，并实现APP签名验证/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -442,8 +432,6 @@
 <p> 填加如下命令:</p>
 <p><code>android.useDeprecatedNdk=true</code></p>
 </li>
-</ol>
-<ol>
 <li><p>调用c++的java类</p>
 <p><strong>必须与app下的build.gradle中moduleName相同</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class JNIUtils &#123;</div><div class="line"></div><div class="line">    static &#123;</div><div class="line">        System.loadLibrary(&quot;signUtil&quot;);//必须与app下的build.gradle中moduleName相同</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static native String getPublicKey(Object obj);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -558,25 +546,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/03/12/Android通过JNI加密，并实现APP签名验证/"
-     data-title="Android通过JNI加密，并实现APP签名验证"
-     data-content=""
-     data-url="http://wxmylife.com/2017/03/12/Android通过JNI加密，并实现APP签名验证/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -584,16 +553,9 @@
           </div>
           
 
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/03/12/Android通过JNI加密，并实现APP签名验证/"
-           data-title="Android通过JNI加密，并实现APP签名验证" data-url="http://wxmylife.com/2017/03/12/Android通过JNI加密，并实现APP签名验证/">
-      </div>
     
   </div>
 
@@ -839,43 +801,32 @@
 
   
 
-  
-    
-  
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"wxmylife"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
-    
-      
-      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+
+
+
+	
+
+
+
+
+
   
 
 
 
 
 
+  
 
 
 
 
 
+  
 
 
 
