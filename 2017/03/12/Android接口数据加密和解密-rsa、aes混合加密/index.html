@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://wxmylife.com/images/2_5.png">
 <meta property="og:image" content="http://wxmylife.com/images/2_6.png">
 <meta property="og:image" content="http://wxmylife.com/images/2_7.png">
-<meta property="og:updated_time" content="2017-03-12T16:15:25.000Z">
+<meta property="og:updated_time" content="2017-03-26T15:12:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android接口数据加密和解密(rsa、aes混合加密)">
 <meta name="twitter:description" content="流程介绍：是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密">
@@ -413,7 +413,7 @@
         <h2 id="流程介绍："><a href="#流程介绍：" class="headerlink" title="流程介绍："></a>流程介绍：</h2><p>是先由服务器创建RSA密钥对，RSA公钥保存在安卓的so文件里面，服务器保存RSA私钥。而安卓创建AES密钥（这个密钥也是在so文件里面），并用该AES密钥加密待传送的明文数据，同时用接受的RSA公钥加密AES密钥，最后把用RSA公钥加密后的AES密钥同密文一起通过Internet传输发送到服务器。当服务器收到这个被加密的AES密钥和密文后，首先调用服务器保存的RSA私钥，并用该私钥解密加密的AES密钥，得到AES密钥。最后用该AES密钥解密密文得到明文</p>
 <p><img src="/images/2_1.png" alt="数据加密流程"></p>
 <a id="more"></a>
-<h4 id="推荐文章"><a href="#推荐文章" class="headerlink" title="推荐文章"></a>推荐文章</h4><p><a href="http://www.jianshu.com/p/d4fee3a2de82" target="_blank" rel="external">Android数据加密方案</a></p>
+<h2 id="推荐文章"><a href="#推荐文章" class="headerlink" title="推荐文章"></a>推荐文章</h2><p><a href="http://www.jianshu.com/p/d4fee3a2de82" target="_blank" rel="external">Android数据加密方案</a></p>
 <p><a href="http://www.cnblogs.com/whoislcj/p/5470095.html" target="_blank" rel="external">Android数据加密之RSA加密</a></p>
 <p><a href="http://www.cnblogs.com/whoislcj/p/5473030.html" target="_blank" rel="external">Android数据加密之Aes加密</a></p>
 <h2 id="制作RSA公钥和私钥"><a href="#制作RSA公钥和私钥" class="headerlink" title="制作RSA公钥和私钥"></a>制作RSA公钥和私钥</h2><ul>
@@ -637,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程介绍："><span class="nav-number">1.</span> <span class="nav-text">流程介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推荐文章"><span class="nav-number">1.0.1.</span> <span class="nav-text">推荐文章</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作RSA公钥和私钥"><span class="nav-number">2.</span> <span class="nav-text">制作RSA公钥和私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试代码"><span class="nav-number">3.</span> <span class="nav-text">测试代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程介绍："><span class="nav-number">1.</span> <span class="nav-text">流程介绍：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐文章"><span class="nav-number">2.</span> <span class="nav-text">推荐文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作RSA公钥和私钥"><span class="nav-number">3.</span> <span class="nav-text">制作RSA公钥和私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试代码"><span class="nav-number">4.</span> <span class="nav-text">测试代码</span></a></li></ol></div>
             
 
           </div>
